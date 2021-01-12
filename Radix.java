@@ -5,7 +5,7 @@ public class Radix {
     
     public static int nth(int n, int col) {
       //0 10 , 1 10, 2 100
-      return n/(int) Math.pow(10, col) % 10;
+      return Math.abs(n/(int) Math.pow(10, col) % 10);
     }
     
     public static int length(int n) {
@@ -49,24 +49,35 @@ public class Radix {
       while (passes<n) {
         //if 0 passes so far, sort 0th col. If 1 pass, sort 1st col
         int place = passes;
-        //places nums at their respective bucket slot
-        // for (int i = 0; i<data.size(); i++) {
-        //   int num = data.get(i);
-        //   int dig = nth(num, place);
-        //   //System.out.println(num +", " + dig);
-        //   bucket[dig].add(num);
-        // }
+        
+        //get the num, find its dig, add it to the bucket, remove it
         while (data.size()>0) {
           int num = data.get(0);
           int dig = nth(num, place);
           bucket[dig].add(num);
           data.remove(0);
         }
-        //data = new SortableLinkedList();
         merge(data, bucket);
-        System.out.println(data.toString());
         passes++;
       }
-      System.out.println(data.toString());
+    }
+    
+    /* Plan is to split the data into pos and neg ints
+       Sort them separately and then combine them
+       Tail of sorted neg goes to head of sorted pos
+       Inefficient? yeah... That or I can add more bucket slots
+       Scratch all that.
+       Sort it normally and then loop through the data
+       if negative, remove and add to end. Magic.
+    */
+    public static void radixSort(SortableLinkedList data) {
+      radixSortSimple(data);
+      for (int i = 0; i<data.size(); i++) {
+        int num = data.get(i);
+        if (num<0) {
+          data.add(0, data.remove(i));
+          //i--;
+        }
+      }
     }
 }

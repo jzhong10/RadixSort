@@ -79,8 +79,18 @@ public class RadixTester {
       nums.add(0, 5);
       nums.add(0, 15);
       nums.add(0, 32);
+      nums.add(0, 132);
+      nums.add(0, 123132);
       System.out.println("\n" + nums.toString());
       Radix.radixSortSimple(nums);
+      System.out.println("\n" + nums.toString());
+      nums.add(0, -231);
+      nums.add(-231);
+      nums.add(-2);
+      nums.add(-2);
+      nums.add(-56);
+      System.out.println("\n" + nums.toString());
+      Radix.radixSort(nums);
       System.out.println("\n" + nums.toString());
     }
   }
