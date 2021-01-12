@@ -4,7 +4,6 @@ public class Radix {
     }
     
     public static int nth(int n, int col) {
-      //0 10 , 1 10, 2 100
       return Math.abs(n/(int) Math.pow(10, col) % 10);
     }
     
@@ -17,14 +16,12 @@ public class Radix {
     
     public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
       for (int i = 0; i<buckets.length; i++) {
-        // /System.out.println(buckets[i].toString());
         original.extend(buckets[i]);
       }
     }
     
     public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
       for (int i = 0; i<buckets.length; i++) {
-        // /System.out.println(buckets[i].toString());
         original.extend(buckets[i]);
       }
     }
@@ -69,6 +66,7 @@ public class Radix {
        Scratch all that.
        Sort it normally and then loop through the data
        if negative, remove and add to end. Magic.
+       A method I remembered from CodingBat...
     */
     public static void radixSort(SortableLinkedList data) {
       radixSortSimple(data);
@@ -76,7 +74,6 @@ public class Radix {
         int num = data.get(i);
         if (num<0) {
           data.add(0, data.remove(i));
-          //i--;
         }
       }
     }
