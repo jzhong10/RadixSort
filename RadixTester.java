@@ -7,6 +7,7 @@ public class RadixTester {
       }
       if (args.length>1) {
         c = Integer.parseInt(args[1]);
+        System.out.println(Radix.nth(n, c) + "\n");
       }
       /*
       System.out.println(Radix.nth(n, c));
@@ -56,6 +57,7 @@ public class RadixTester {
       Radix.merge(og, buc);
       System.out.println(og.toString());
       */
+
       SortableLinkedList orig = new SortableLinkedList();
       SortableLinkedList[] bucket = new SortableLinkedList[10];
       orig.add(100);
@@ -69,5 +71,16 @@ public class RadixTester {
       }
       Radix.merge(orig, bucket);
       System.out.println(orig.toString());
+      
+      SortableLinkedList nums = new SortableLinkedList();
+      for (int i = 0; i<10; i+=2) {
+        nums.add(i);
+      }
+      nums.add(0, 5);
+      nums.add(0, 15);
+      nums.add(0, 32);
+      System.out.println("\n" + nums.toString());
+      Radix.radixSortSimple(nums);
+      System.out.println("\n" + nums.toString());
     }
   }
