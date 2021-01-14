@@ -15,11 +15,11 @@ public class Radix {
       return (int) Math.log10(n)+1;
     }
     
-    public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
-      for (int i = 0; i<buckets.length; i++) {
-        original.extend(buckets[i]);
-      }
-    }
+    // public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
+    //   for (int i = 0; i<buckets.length; i++) {
+    //     original.extend(buckets[i]);
+    //   }
+    // }
     
     public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
       for (int i = 0; i<buckets.length; i++) {
