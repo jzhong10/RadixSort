@@ -92,8 +92,11 @@ public class Radix {
         //get the num, find its dig, add it to the bucket, remove it
         while (data.size()>0) {
           int num = data.remove(0);
-          if (place==0 && length(num)>n) {
-            n = length(num);
+          if (place==0) {
+            int temp = length(num);
+            if (temp>n) {
+              n = temp;
+            }
           }
           int dig = nth(num, place);
           if (num<0) {
